@@ -5,7 +5,6 @@ def pertenece (s: list [int], e: int ) -> bool:
     
     return False
 
-print(pertenece([1,2,3],4))
 
 #Solucion con while pertenece:
 #def pertenece2 (s: list [int], e = int ) -> bool:
@@ -21,6 +20,17 @@ print(pertenece([1,2,3],4))
 #       return False
 
 
+def divide_a_todos (s: list [int], e: int) -> bool:
+    i:int = 0
+    while i < len (s):
+        if s[i] % e == 0:
+            i+=1
+        else: 
+            return False
+        
+    return True  
+     
+
 def suma_total (s: list[int]) -> int:
     suma: int = 0
     for n in s:
@@ -35,6 +45,40 @@ def suma_total (s: list[int]) -> int:
 #       i += 1
 #    
 #    return suma
+
+
+def ordenados (s: list[int])-> bool:
+    i:int = 0
+
+    while i < len(s)-1:
+        if s[i] < s[i+1]:
+          i+=1
+        else: 
+            return False
+        
+    return True  
+
+
+def mayor_a_7 (s: list[str]) -> bool:
+    i:int = 0
+    while i < len (s):
+        if len (s[i]) > 7:
+            return True
+        else: i+=1
+
+    return False
+
+def palindromo (texto: str) -> bool:
+    i:int = 0
+    j = len (texto)-1
+    while i < len (texto):
+        if texto [i] == texto [j]:
+            i +=1
+            j-=1
+        else:
+            return False
+        
+    return True
 
 
 def fortaleza(contraseña: str) -> str:
@@ -59,4 +103,61 @@ def fortaleza(contraseña: str) -> str:
         print("Rojo")
     else:
         print ("Amarillo")
+
+
+def banco (s: list[tuple]) -> int:
+    i:int = 0
+    plata: int = 0
+    while i < len (s):
+        if s[i][0] == 'R':
+            plata -= s[i][1]
+
+        if s[i][0] == 'I':
+            plata += s[i][1]
+        
+        i+=1
+    return plata
+
+
+
+def palabra (p: str) -> bool:
+    x: int = 0
+    cant: int = 0
+    while x < len (p):
+        if p[x] == 'a':
+            cant+=1
+        if p[x] == 'e':
+            cant+=1
+        if p[x] == 'i':
+            cant+=1
+        if p[x] == 'o':
+            cant +=1
+        if p[x] == 'u':
+            cant +=1
+        x += 1
+
+    if cant >= 3:
+        return True
+    else: return False
+
+    
+
+#Ejercicio 2:
+
+def poner_dos_pares_en_cero (lista: list[int]):
+    for i in range (0, len(lista)):
+        if i % 2 == 0:
+                lista[i] = 0
+    return lista
+print(poner_dos_pares_en_cero([5,2,4,5]))
+
+
+
+
+#Ejercicio 5
+
+def peretenece_a_cada_uno_v2 (l:list[list[int]],e: int, res: list [bool]):
+    res.clear()
+    for lista in l:
+        res.append(pertenece(lista,e))
 
