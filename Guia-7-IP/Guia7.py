@@ -149,7 +149,81 @@ def poner_dos_pares_en_cero (lista: list[int]):
         if i % 2 == 0:
                 lista[i] = 0
     return lista
-print(poner_dos_pares_en_cero([5,2,4,5]))
+
+
+
+def eliminar_vocales(s: str):
+    i: int = 0
+    palabra: str = ""
+
+    while i < len (s):
+        if s[i] == 'a' or s[i] =='e' or s[i] =='i' or s[i] =='o' or s[i] =='u':
+            i += 1
+        else: 
+            palabra = palabra + s[i]
+            i += 1
+    return palabra
+
+
+def reemplaza_vocales (s: str) -> str:
+    i: int = 0
+    palabra: str = ""
+
+    while i < len (s):
+        if s[i] == 'a' or s[i] =='e' or s[i] =='i' or s[i] =='o' or s[i] =='u':
+            palabra = palabra + "_"
+            i += 1
+        else: 
+            palabra = palabra + s[i]
+            i += 1
+
+    return palabra
+
+
+def da_vuelta (s: str) -> str:
+    palabra: str = ""
+    for i in range (len(s)-1,-1,-1):
+        palabra = palabra + s[i]
+    return palabra
+
+print(da_vuelta("tiago"))
+        
+def eliminar_repetidos (s:str) -> str:
+    res: list[str] = []
+
+
+    for i in range (len(s)):
+        if s[i] not in res:
+            res.append(s[i])
+        return res
+    
+print (eliminar_repetidos("haga"))
+
+#Ejercicio 3:
+def aprobado (notas: list[int]) -> int:
+    i: int = 0
+    aprobado: bool = False
+    suma: int = 0
+    promedio: int = 0
+    
+
+    while i < len(notas):
+        if notas[i] < 4:
+            return "3"
+        else:
+            suma = suma + notas[i]
+            i += 1
+        
+    promedio = suma // len(notas)    
+        
+    if promedio >= 4 and promedio < 7:
+            return "2"
+    if promedio >= 7:
+            return "1"
+    
+
+
+            
 
 
 
