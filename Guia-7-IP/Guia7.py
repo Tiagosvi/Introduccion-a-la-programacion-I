@@ -186,7 +186,6 @@ def da_vuelta (s: str) -> str:
         palabra = palabra + s[i]
     return palabra
 
-print(da_vuelta("tiago"))
         
 def eliminar_repetidos (s:str) -> str:
     res: list[str] = []
@@ -221,17 +220,31 @@ def aprobado (notas: list[int]) -> int:
     if promedio >= 7:
             return "1"
     
+#Ejercicio 4:
+
+def estudiantes ():
+    i: int = 0
+    nombre = input ("nombre\n")
+    res: list[str] = []
+
+    while nombre != "listo":
+        res.append(nombre)
+        nombre = input ("nombre\n")
+
+    return res        
+
+def sube(s: list[tuple]):
+    i: int = 0
+    carga = input("Que desea realizar\n")
+    res : list [tuple] = []
 
 
-            
+    #while 
+       
+   
+    #Ejercicio 5
 
-
-
-
-#Ejercicio 5
-
-def peretenece_a_cada_uno_v2 (l:list[list[int]],e: int, res: list [bool]):
+def pertenece_a_cada_uno_v2 (l:list[list[int]],e: int, res: list [bool]):
     res.clear()
     for lista in l:
         res.append(pertenece(lista,e))
-
