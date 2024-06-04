@@ -54,16 +54,12 @@ def reverso(nombrearchivo: str):
 
 def agregar_frase_al_final(nombrearchivo: str, frase: str):
     f=open(nombrearchivo)
-    lineas = f.readlines ()
-    i:int = 0
     agregarFinal:list[str] = []
-    sumar: list[str] = frase
-    while i > 0:
-        agregarFinal.append(lineas[i])
-        i+=1
-    agregarFinal = agregarFinal + sumar
+    for linea in f.readlines():
+        agregarFinal.append(linea)
     res = open ("agregarFinal","w")
-    res.writelines(agregarFinal)
+    res.writelines(agregarFinal + [frase])
     res.close()
     f.close()
 
+agregar_frase_al_final("prueba","hola")
