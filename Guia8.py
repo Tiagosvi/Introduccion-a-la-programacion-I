@@ -57,11 +57,11 @@ def agregar_frase_al_final(nombrearchivo: str, frase: str):
     lineas = f.readlines ()
     i:int = 0
     agregarFinal:list[str] = []
-    
+    sumar: list[str] = frase
     while i > 0:
         agregarFinal.append(lineas[i])
         i+=1
-    agregarFinal = agregarFinal + frase
+    agregarFinal = agregarFinal + sumar
     res = open ("agregarFinal","w")
     res.writelines(agregarFinal)
     res.close()
