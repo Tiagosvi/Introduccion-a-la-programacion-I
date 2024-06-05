@@ -1,3 +1,5 @@
+#ARCHIVOS:
+
 #Ejercicio 1:
 def contar_lineas (nombrearchivo : str) -> int:
         f=open(nombrearchivo)
@@ -75,3 +77,58 @@ def agregar_frase_al_principio(nombrearchivo: str, frase: str):
     res.writelines([frase] + agregarPrincipio)
     res.close()
     f.close()
+
+
+#Ejercicio 6:
+
+def listar_palabras_de_archivo (nombrearchivo: str) -> list:
+    f=open(nombrearchivo)
+    lineas = f.readlines()
+    i = 0
+    palabras:list[str] = []
+
+    while i < len(lineas):
+        if len(lineas [i]) >= 5:
+            palabras.append(lineas[i])
+            i+=1
+        else:
+            i+=1
+
+    res=open("palabras","w")
+    res.writelines (palabras)
+    res.close
+    f.close
+
+
+#Ejercicio 7:
+
+#def promedio_estudiante(nombrearchivo: str, lu: str) -> float:
+
+#def calcular_promedio_por_estudiante(nombre_archivo_notas: str, nombre_archivo_promedio: str):
+    #f=open(nombre_archivo_notas)
+    #lineas = f.readlines()
+    #i = 0
+    #promedios:list[str] = []
+
+
+#PILAS:
+from queue import LifoQueue as Pila
+import random
+
+def generar_nros_al_azar (cantidad: int, desde: int, hasta: int) -> Pila:
+    p:Pila = Pila(maxsize=cantidad)
+
+    for i in range (0, cantidad):
+        p.put(random.randint(desde, hasta))
+
+    return p
+
+
+def generar2(cuantos: int, desde: int, hasta: int) -> Pila:
+    p:Pila = generar_nros_al_azar(cuantos, desde, hasta)
+    for i in range(0, cuantos):
+        p.put(random.randint(desde, hasta))
+    while not p.empty():
+        print(p.get())
+
+generar2(20,20,80)
