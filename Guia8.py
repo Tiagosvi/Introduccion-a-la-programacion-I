@@ -212,7 +212,7 @@ def cantidad_elementos(c: Cola) -> int:
         sumar += 1
         lista.append(c.get())
 
-    for i in range(len(lista)-1,-1):
+    for i in range(len(lista)):
         c.put(lista[i])
 
     return sumar
@@ -221,16 +221,30 @@ c:Cola = Cola()
 c.put(2)
 c.put(3)
 c.put(5)
-c.put(9)
+c.put(3)
 
 def buscar_maximo (c: Cola[int]) -> int:
     lista:list = []
+    prueba:list = []
 
     while not(Cola.empty(c)):
         lista.append(c.get())
 
-    for i in range (len(lista)-1,-1):
+    for i in range (len(lista)):
         c.put(lista[i])
+
+    while not(Cola.empty(c)):
+        prueba.append(c.get())
+
+    print(prueba)   
+
     
     return max(lista)
+
+    
+
+print(buscar_maximo(c))
+
+
+
 
