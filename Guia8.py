@@ -115,6 +115,8 @@ def listar_palabras_de_archivo (nombrearchivo: str) -> list:
 from queue import LifoQueue as Pila
 import random
 
+#Ejercicio 8:
+
 def generar_nros_al_azar (cantidad: int, desde: int, hasta: int) -> Pila:
     p:Pila = Pila()
 
@@ -130,6 +132,8 @@ p.put(4)
 p.put(7)
 p.put(6)
 
+#Ejercicio 9:
+
 def cantidad_elementos(p: Pila) -> int:
     sumar: int = 0
     lista:list = []
@@ -144,6 +148,7 @@ def cantidad_elementos(p: Pila) -> int:
 
     return sumar
 
+#Ejercicio 10:
 
 def buscar_el_maximo(p: Pila[int]) -> int:
     lista:list = []
@@ -155,7 +160,77 @@ def buscar_el_maximo(p: Pila[int]) -> int:
         p.put(lista[i])
     return max(lista)
 
-print(buscar_el_maximo(p))
+
+#Ejercicio 11:
 
 def esta_bien_balanceada(s: str) -> bool:
+    p:Pila = Pila()
+
+    for i in range (len(s)-1,-1,-1):
+        if s[i] == "(" or s[i] == ")":
+            p.put(s[i])
     
+    abierto: int = 0
+    cerrado: int = 0 
+    while not(Pila.empty(p)):
+        elemento:str = p.get()
+        if elemento == "(":
+            abierto += 1
+        else:
+            cerrado +=1
+
+    if abierto != cerrado:
+        return False
+    
+    else: return True
+
+
+
+#Ejercicio 12 (este no lo hice)
+
+
+#COLAS:
+from queue import Queue as Cola
+
+#Ejercicio 13:
+def generar_al_azar(cantidad: int, desde: int, hasta: int) -> Cola[int]:
+    c:Cola = Cola()
+
+    for i in range (cantidad):
+        elemento:int = random.randint(desde, hasta)
+        print(elemento)
+        c.put(elemento)
+    return c
+
+
+
+def cantidad_elementos(c: Cola) -> int:
+    sumar:int = 0
+    lista: list = []
+
+    while not (Cola.empty(c)):
+        sumar += 1
+        lista.append(c.get())
+
+    for i in range(len(lista)-1,-1):
+        c.put(lista[i])
+
+    return sumar
+
+c:Cola = Cola()
+c.put(2)
+c.put(3)
+c.put(5)
+c.put(9)
+
+def buscar_maximo (c: Cola[int]) -> int:
+    lista:list = []
+
+    while not(Cola.empty(c)):
+        lista.append(c.get())
+
+    for i in range (len(lista)-1,-1):
+        c.put(lista[i])
+    
+    return max(lista)
+
