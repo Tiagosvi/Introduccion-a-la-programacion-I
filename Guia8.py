@@ -116,19 +116,46 @@ from queue import LifoQueue as Pila
 import random
 
 def generar_nros_al_azar (cantidad: int, desde: int, hasta: int) -> Pila:
-    p:Pila = Pila(maxsize=cantidad)
+    p:Pila = Pila()
 
-    for i in range (0, cantidad):
-        p.put(random.randint(desde, hasta))
+    for i in range (cantidad):
+        elemento:int = random.randint (desde, hasta)
+        p.put(elemento)
 
-    return p
+p:Pila = Pila()
+p.put(1)
+p.put(2)
+p.put(3)
+p.put(4)
+p.put(7)
+p.put(6)
+
+def cantidad_elementos(p: Pila) -> int:
+    sumar: int = 0
+    lista:list = []
+
+    while not(Pila.empty(p)):
+        sumar += 1
+        lista.append(p.get())
+    
+
+    for i in range (len(lista)-1,-1):
+        p.put(lista[i])
+
+    return sumar
 
 
-def generar2(cuantos: int, desde: int, hasta: int) -> Pila:
-    p:Pila = generar_nros_al_azar(cuantos, desde, hasta)
-    for i in range(0, cuantos):
-        p.put(random.randint(desde, hasta))
-    while not p.empty():
-        print(p.get())
+def buscar_el_maximo(p: Pila[int]) -> int:
+    lista:list = []
 
-generar2(20,20,80)
+    while not(Pila.empty(p)):
+        lista.append(p.get())
+
+    for i in range (len(lista)-1,-1):
+        p.put(lista[i])
+    return max(lista)
+
+print(buscar_el_maximo(p))
+
+def esta_bien_balanceada(s: str) -> bool:
+    
