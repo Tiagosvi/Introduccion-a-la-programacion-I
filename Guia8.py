@@ -202,7 +202,7 @@ def generar_al_azar(cantidad: int, desde: int, hasta: int) -> Cola[int]:
         c.put(elemento)
     return c
 
-
+#Ejercicio 14:
 
 def cantidad_elementos(c: Cola) -> int:
     sumar:int = 0
@@ -223,6 +223,8 @@ c.put(3)
 c.put(5)
 c.put(3)
 
+#Ejercicio 15:
+
 def buscar_maximo (c: Cola[int]) -> int:
     lista:list = []
     prueba:list = []
@@ -241,10 +243,34 @@ def buscar_maximo (c: Cola[int]) -> int:
     
     return max(lista)
 
-    
 
-print(buscar_maximo(c))
+#EJERCICIO 16:
+
+def armar_secuencia_de_bingo() -> Cola[int]:
+    c:Cola = Cola()
+    elemento: int = 0
+    lista:list = []
+
+    for i in range (12):
+        elemento = random.randint (0,99)
+        c.put(elemento)
+
+    return c
 
 
+print(armar_secuencia_de_bingo())
 
+def jugar_carton_de_bingo (carton: list[int], c: Cola[int]) -> int:
+    i:int= 0
+    c.put(armar_secuencia_de_bingo())
+    salio:list = []
+
+
+    while i < len(list):
+        if list[i] in c:
+            res = res + 1
+            salio.append(c.get(i))
+            i += 1
+        else:
+            i+=1
 
