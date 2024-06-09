@@ -217,11 +217,6 @@ def cantidad_elementos(c: Cola) -> int:
 
     return sumar
 
-c:Cola = Cola()
-c.put(2)
-c.put(3)
-c.put(5)
-c.put(3)
 
 #Ejercicio 15:
 
@@ -258,19 +253,101 @@ def armar_secuencia_de_bingo() -> Cola[int]:
     return c
 
 
-print(armar_secuencia_de_bingo())
+
+
+def pertenece_y_pos(x:int,l:list[int]) -> int:
+    res:int = -1
+    for i in range(len(l)):
+        if x == l[i]:
+            res = i
+        return res
 
 def jugar_carton_de_bingo (carton: list[int], c: Cola[int]) -> int:
-    i:int= 0
-    c.put(armar_secuencia_de_bingo())
-    salio:list = []
+    res:int= 0
 
 
-    while i < len(list):
-        if list[i] in c:
-            res = res + 1
-            salio.append(c.get(i))
-            i += 1
-        else:
-            i+=1
+    while len(carton) != 0:
+        bolita:int = c.get()
+        print (bolita)
+        if bolita in carton:
+            carton.pop(pertenece_y_pos(bolita,carton))
+            print(f"CARTON = {carton}")
+        res+=1
+    print(f"res:{res}")
+    return res
+
+
+
+#Ejercicio 17:
+
+
+
+def n_pacientes_urgentes (c:Cola [(int, str, str)]) -> int:
+    i:int = 0
+    res: int = 0
+    lista:list = []
+    
+    
+    while not(Cola.empty(c)):
+        lista.append(c.get())
+
+    for i in range (len(lista)):
+        if lista[i][0] <= 3:
+           res+=1
+    print(res)   
+    return res
+
+           
+
+c:Cola = Cola()
+c.put(["Juan",20,False,True])
+c.put(["Pedro",20,True,False])
+
+def atencion_a_clientes(c : Cola[(str, int, bool, bool)]) -> Cola[(str, int, bool, bool)]:
+    i:int = 0
+    res: int = 0
+    lista:list = []
+    sol:list = []
+    
+    while not(Cola.empty(c)):
+        lista.append(c.get())
+
+    for i in range (len(lista)):
+        if lista[i][2] == True:
+            c.put(lista[i])
+    
+    for i in range (len(lista)):
+        if lista[i][3] == True:
+            c.put(lista[i])
+        
+    while not(Cola.empty(c)):
+        sol.append(c.get())
+    
+    print(sol)
+    return c
+
+
+
+#DICCIONARIOS:
+
+#Ejercicio 19:
+
+palabras: list[str] = ["Hola","Mundo","Murcielago","chau"]
+
+def agrupar_por_longitud(palabras: list[str]) -> dict:
+    d:dict[int,int] = {}
+    
+    for i in range (len(palabras)):
+        if len(palabras[i]) not in d:
+            d[len(palabras[i])] = 1
+        else: 
+            d[len(palabras[i])] += 1
+
+    print(d)
+    return d
+
+agrupar_por_longitud(palabras)
+
+
+
 
