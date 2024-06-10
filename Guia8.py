@@ -326,7 +326,7 @@ def atencion_a_clientes(c : Cola[(str, int, bool, bool)]) -> Cola[(str, int, boo
     print(sol)
     return c
 
-
+atencion_a_clientes(c)
 
 #DICCIONARIOS:
 
