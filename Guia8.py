@@ -332,8 +332,6 @@ def atencion_a_clientes(c : Cola[(str, int, bool, bool)]) -> Cola[(str, int, boo
 
 #Ejercicio 19:
 
-palabras: list[str] = ["Hola","Mundo","Murcielago","chau"]
-
 def agrupar_por_longitud(palabras: list[str]) -> dict:
     d:dict[int,int] = {}
     
@@ -346,8 +344,57 @@ def agrupar_por_longitud(palabras: list[str]) -> dict:
     print(d)
     return d
 
-agrupar_por_longitud(palabras)
+#Ejercicio 20:
 
+#def calcular_promedio_por_estudiante(notas: str) -> dict[str,float]: NO ME SALEE!!!
+#   d:dict[str, float]
 
+#Ejercicio 21:
+palabras: list[str] = ["Hola","Hola","Mundo","Murcielago","chau"]
+
+def la_palabra_mas_frecuente(palabras: list[str]) -> dict:
+    d:dict[str,int] = {}
+    res:int = 0
+    for i in range (len(palabras)):
+        if palabras [i] not in d:
+            d[palabras[i]] = 1
+        else:
+            d[palabras[i]] += 1
+
+    
+    for i,j in d.items():
+        if res < j:
+            res= j
+            val=i
+
+    print(val)
+    return val
+
+la_palabra_mas_frecuente(palabras)
+
+#Ejercicio 22:
+
+historiales:dict[str,Pila[str]] = {}
+
+def visitar_sitio(historiales:dict[str, Pila[str]], usuario:str, sitio:str):
+    p:Pila=Pila()
+    if usuario not in historiales:
+        historiales[usuario] = p.put(sitio)
+
+    else:
+        for k,v in historiales.items():
+            if k == usuario:
+                p.put(sitio)
+
+def navegar_atras(historiales: dict[str, Pila[str]], usuario:str):
+    actual:str = ""
+    anterior:str = ""
+
+    p = historiales[usuario]
+    actual = p.get()
+    anterior = p.get()
+    p.put(anterior)
+    p.put(actual)
+    visitar_sitio(historiales,usuario,anterior)
 
 
