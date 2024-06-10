@@ -397,4 +397,10 @@ def navegar_atras(historiales: dict[str, Pila[str]], usuario:str):
     p.put(actual)
     visitar_sitio(historiales,usuario,anterior)
 
+#Ejercicio 23:
 
+#def agregar_producto(inventario: dict[str,dict[str,int]], nombre: str, precio: int, cantidad: int):
+#   valor:str = ""
+
+#    for k,v in inventario.items():
+#        inventario[nombre] = precio
