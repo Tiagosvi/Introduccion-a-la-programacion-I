@@ -404,3 +404,5 @@ def navegar_atras(historiales: dict[str, Pila[str]], usuario:str):
 
 #    for k,v in inventario.items():
 #        inventario[nombre] = precio
+
+
