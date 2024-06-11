@@ -64,7 +64,7 @@ def stock_productos(stock_cambios: list[tuple[(str, int)]]) -> dict[str, tuple[(
 a: list[tuple[(str, int)]] = [("marcelo", 2), ("marcelo", 3),
                               ("marcelo", 10), ("conocelo", 1),
                               ("lucas", 20), ("lucas", -100)]
-print(stock_productos(a))
+
 
 #truefalse                              falsefalse                              truetrue                    falsetrue
 grilla_horaria:list[list[str]] = [["m","m","m","m","m","p","p","p"],["m","k","k","m","m","p","p","p"],["m","m","m","m","p","p","p","p"],["m","m","m","l","p","p","p","p"],
@@ -94,5 +94,44 @@ def ejmalisimo(grilla_horaria:list[list[str]]) -> list[tuple[bool,bool]]:
 
     print(res)
 
-ejmalisimo(grilla_horaria)
+
+def subsecuencia_mas_larga(tipos_pacientes_atendidos: list[str]) -> int:
+    contador:int = 0
+    arranca:int = 0
+    indice:int = 0
+    res:int = 0
+
+    for i in range (len (tipos_pacientes_atendidos)):
+        if tipos_pacientes_atendidos[i] != "gato" and tipos_pacientes_atendidos[i] != "perro":
+            suma = 0
+            suma = contador
+            contador = 0
+            
+        else: 
+            if contador == 0:
+                indice:int = i
+            contador += 1
+            suma = contador
+
+        if suma > arranca:
+                arranca = suma
+                res = indice
+
+    print(arranca)
+    print(res)
+
+subsecuencia_mas_larga(["perro","pez","delfin","gato","perro","gato","perro","gato","perro","gato","gato"])
+
+
+
+
+
+
+    
+
+
+
+        
+
+        
 
