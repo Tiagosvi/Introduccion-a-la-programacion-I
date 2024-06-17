@@ -27,6 +27,34 @@ todosDigitosIguales x |  x < 10 = True
                       | otherwise = todosDigitosIguales (rem x 100) 
 
 
+cantDigitos :: Int -> Int
+cantDigitos x | x == 0 = 0
+              | otherwise = 1 + cantDigitos(div x 10)
+
+invertirNum :: Int -> Int
+invertirNum 0 = 0
+invertirNum x = ultimoNum * (10^((cantDigitos x) -1)) + invertirNum(div x 10)
+            where ultimoNum = mod x 10
+
+
+esCapicua :: Int -> Bool
+esCapicua x | x < 10 = True
+            | otherwise = x == invertirNum x
+
+
+menorDivisor :: Int -> Int
+menorDivisor x | mod x 2 == 0 = 2
+               | otherwise = encontrarDivisores x 2
+
+encontrarDivisores :: Int -> Int -> Int
+encontrarDivisores x y| mod x y == 0 = y
+                      | otherwise = encontrarDivisores x (y+1)
+
+
+esPrimo :: Int -> Bool
+esPrimo x = x == menorDivisor x
+
+
 
 
 
