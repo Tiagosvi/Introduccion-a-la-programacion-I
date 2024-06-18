@@ -73,3 +73,70 @@ capicua [] = False
 capicua (x:xs) = reverso (x:xs) == (x:xs)
 
 
+-- Ejercicio 3:
+
+sumatoria :: [Int] -> Int
+sumatoria [] = 0
+sumatoria (x:xs) = x + sumatoria xs
+
+productoria :: [Int] -> Int
+productoria [] = 1
+productoria (x:xs) = x * productoria xs
+
+maximo :: [Int] -> Int
+maximo [x] = x
+maximo (x:y:xs) | x < y = maximo (y:xs)
+                | otherwise = maximo (x:xs)
+
+sumarN :: Int -> [Int] -> [Int]
+sumarN n [] = []
+sumarN n (x:xs) = (x+n): sumarN n xs
+
+sumarElPrimero :: [Int] -> [Int]
+sumarElPrimero [] = []
+sumarElPrimero (x:xs) = sumarN x (x:xs)
+
+ult :: [Int] -> Int
+ult [x] = x
+ult (x:xs) = ult xs
+
+sumarElUltimo :: [Int] -> [Int]
+sumarElUltimo [] = []
+sumarElUltimo (x:xs) = sumarN (ult (x:xs)) (x:xs)
+
+pares :: [Int] -> [Int]
+pares [] = []
+pares (x:xs) | mod x 2 == 0 = x: pares xs
+             | otherwise = pares xs
+
+multiplosDeN :: Int -> [Int] -> [Int]
+multiplosDeN n [] = []
+multiplosDeN n (x:xs) | mod x n == 0 = x: multiplosDeN n xs
+                      | otherwise = multiplosDeN n xs
+
+ordenar :: [Int] -> [Int]
+ordenar [] = []
+--ordenar (x:xs) | maximo (x:xs) NO ME SALEE!!!
+
+-- Ejercicio 4:
+
+sacarBlancosRepetidos :: [Char] -> [Char]
+sacarBlancosRepetidos [] = []
+sacarBlancosRepetidos [y] = y:[]
+sacarBlancosRepetidos (x:y:xs) | x == ' ' && y == ' ' = ' ': sacarBlancosRepetidos xs
+                               | otherwise = x: sacarBlancosRepetidos (y:xs)
+
+contarPalabras :: [Char] -> Int
+contarPalabras [] = 0
+contarPalabras [x] = 1
+contarPalabras (x:xs) | x == ' ' =  1 + contarPalabras (xs)
+                      | otherwise = contarPalabras xs
+
+
+
+palabras :: [Char] -> [[Char]]
+palabras [] = []
+palabras (x:xs) | x /= ' ' = [x]: palabras xs
+                | otherwise = palabras xs
+
+
