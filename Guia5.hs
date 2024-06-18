@@ -136,7 +136,34 @@ contarPalabras (x:xs) | x == ' ' =  1 + contarPalabras (xs)
 
 palabras :: [Char] -> [[Char]]
 palabras [] = []
-palabras (x:xs) | x /= ' ' = [x]: palabras xs
-                | otherwise = palabras xs
+palabras ls = palabrasAux ls []
+
+palabrasAux :: [Char] -> [Char] -> [[Char]]
+palabrasAux [] palabra = [palabra]
+palabrasAux (x:xs) palabra | x /= ' ' = palabrasAux xs (palabra ++[x])
+                          | otherwise = [palabra]++ (palabrasAux xs [])
 
 
+--palabraMasLarga :: [Char] -> Int
+--palabraMasLarga [] = 0
+--palabraMasLarga (x:xs) = contarPalabras (palabras (x:xs)) NO ME SALE!!!
+
+aplanar :: [[Char]] -> [Char]
+aplanar [] = []
+aplanar (x:xs) = x ++ aplanar xs
+
+aplanarConBlancos :: [[Char]] -> [Char]
+aplanarConBlancos [] = []
+aplanarConBlancos (x:xs) = x ++ " " ++ aplanarConBlancos xs
+
+aplanarConNBlancos :: [[Char]] -> Int -> [Char]
+aplanarConNBlancos [] n = []
+aplanarConNBlancos (x:xs) n = x ++ (blancosN " " n) ++ aplanarConNBlancos xs n
+
+blancosN :: [Char] -> Int -> [Char]
+blancosN [] n = []
+blancosN (x:xs) n | 0 >= n = " "
+                  | otherwise = (x:xs) ++ blancosN (x:xs) (n-1)
+
+
+-- Ejercicio 5:
