@@ -167,3 +167,46 @@ blancosN (x:xs) n | 0 >= n = " "
 
 
 -- Ejercicio 5:
+
+sumaAcumulada :: [Int] -> [Int]
+sumaAcumulada [] = []
+sumaAcumulada (x:y:xs) | longitud xs == 0 = [x] ++ [x+y]
+                       | otherwise = [x] ++ sumaAcumulada ((x+y):xs)
+
+--Descomponer primos
+
+menorDivisor :: Int -> Int
+menorDivisor x | mod x 2 == 0 = 2
+               | otherwise = encontrarDivisores x 2
+
+encontrarDivisores :: Int -> Int -> Int
+encontrarDivisores x y| mod x y == 0 = y
+                      | otherwise = encontrarDivisores x (y+1)
+
+
+esPrimo :: Int -> Bool
+esPrimo x = x == menorDivisor x
+
+descomponerEnPrimos :: [Int] -> [[Int]]
+descomponerEnPrimos [] = []
+descomponerEnPrimos (x:xs) = (descomponerUnPrimo x (descomponerUnPrimoAux x)): descomponerEnPrimos xs 
+
+
+descomponerUnPrimo :: Int -> [Int] -> [Int]
+descomponerUnPrimo n [] = []
+descomponerUnPrimo n (x:xs) | mod n x == 0 = x: descomponerUnPrimo (div n x) (x:xs)
+                             | otherwise = descomponerUnPrimo n xs
+
+descomponerUnPrimoAux :: Int -> [Int]
+descomponerUnPrimoAux n = filtrarPrimos((encontrarDiv n 2))
+
+filtrarPrimos :: [Int] -> [Int]
+filtrarPrimos [] = []
+filtrarPrimos (x:xs) | esPrimo x = x:filtrarPrimos xs
+                     | otherwise = filtrarPrimos xs
+
+
+encontrarDiv :: Int -> Int -> [Int]
+encontrarDiv n y | y == n = (n:[])
+                 | mod n y == 0 = y: encontrarDiv n (y+1)
+                 | otherwise = encontrarDiv n (y+1)
