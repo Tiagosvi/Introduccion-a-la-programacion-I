@@ -30,20 +30,36 @@ amigosDe a ((x,y):xs) | amigosDeAux a x && not(amigosDeAux a y) = y: amigosDe a 
                       | otherwise = amigosDe a xs
 
 
+
+
 amigosDeAux :: String -> String -> Bool
 amigosDeAux a x = a == x
 
 
+
+longitud :: [String] -> Int
+longitud [] = 0
+longitud (x:xs) = 1 + (longitud xs)
+
+
 personaConMasAmigos :: [(String,String)] -> String
-personaConMasAmigos [] = _
-personaConMasAmigos ((x,y):xs) | 
+personaConMasAmigos [] = ""
+personaConMasAmigos l = personaConMasAmigosAux (personas l) l 
 
 
-cantAmigos :: String -> [(String,String)] -> Int
-cantAmigos a [] = 0
-cantAmigos a (x:xs) | amigosDeAux a x && not(amigosDeAux a y) = 1 + cantAmigos a xs
-                    | amigosDeAux a y && not(amigosDeAux a x) = 1 + cantAmigos a xs
-                    | otherwise = compararAmigos a 
+personaConMasAmigosAux :: [String] -> [(String,String)] -> String
+personaConMasAmigosAux [] [] = ""
+personaConMasAmigosAux (x:y:xs) (z:zs) | longitud (x:y:xs) == 2 && longitud(amigosDe x (z:zs)) >= longitud(amigosDe y (z:zs)) = x
+                                       | longitud (x:y:xs) == 2 && longitud(amigosDe x (z:zs)) < longitud(amigosDe y (z:zs)) = y
+                                       | longitud (amigosDe x (z:zs)) > longitud(amigosDe y (z:zs)) = personaConMasAmigosAux (x:xs) (z:zs)
+                                       | otherwise = personaConMasAmigosAux (y:xs) (z:zs)
+
+
+
+
+
+
+
 
 
 
