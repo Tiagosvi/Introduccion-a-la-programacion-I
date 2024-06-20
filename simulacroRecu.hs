@@ -38,11 +38,15 @@ personaConMasAmigos :: [(String,String)] -> String
 personaConMasAmigos [] = _
 personaConMasAmigos ((x,y):xs) | 
 
+
 cantAmigos :: String -> [(String,String)] -> Int
 cantAmigos a [] = 0
 cantAmigos a (x:xs) | amigosDeAux a x && not(amigosDeAux a y) = 1 + cantAmigos a xs
                     | amigosDeAux a y && not(amigosDeAux a x) = 1 + cantAmigos a xs
                     | otherwise = compararAmigos a 
+
+
+
 
 
 
