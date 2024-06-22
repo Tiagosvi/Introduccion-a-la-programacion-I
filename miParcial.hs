@@ -36,9 +36,14 @@ longitud (x:xs) = 1 + longitud xs
 --Ejercicio 4:
 
 codificarFrase :: [Char] -> [(Char,Char)] -> [Char]
-codificarFrase [] [] = []
-codificarFrase (x:xs) ((z,y):zs) | hayQueCodificar x ((z,y):zs) = y: codificarFrase xs ((z,y):zs)
-                                 | otherwise = codificarFrase xs ((z,y):zs)
+codificarFrase [] _ = []
+codificarFrase (x:xs) ((z,y):zs) | not(hayQueCodificar x ((z,y):zs)) = x: codificarFrase xs ((z,y):zs)
+                                 | otherwise = codificarFraseAux x ((z,y):zs) : codificarFrase xs ((z,y):zs)
+
+codificarFraseAux :: Char -> [(Char,Char)] -> Char
+codificarFraseAux c [] = 'a'
+codificarFraseAux c ((x,y):xs) | c /= x = codificarFraseAux c xs
+                               | otherwise = y
 
 
 
