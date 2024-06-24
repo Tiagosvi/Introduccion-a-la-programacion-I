@@ -54,7 +54,24 @@ encontrarDivisores x y| mod x y == 0 = y
 esPrimo :: Int -> Bool
 esPrimo x = x == menorDivisor x
 
+mayorDigitoPar :: Int -> Int
+mayorDigitoPar 0 = -1
+mayorDigitoPar x = mayor (mayorDigitoParAux x)
 
+
+mayorDigitoParAux :: Int -> [Int]
+mayorDigitoParAux 0 = []
+mayorDigitoParAux x | esPar(mod x 10) = mod x 10: mayorDigitoParAux (div x 10)
+                    | otherwise = mayorDigitoParAux (div x 10)
+
+
+mayor :: [Int] -> Int
+mayor [y] = y
+mayor (x:y:xs) | x > y = mayor (x:xs)
+               | otherwise = mayor (y:xs)
+
+esPar :: Int -> Bool
+esPar x = mod x 2 == 0 
 
 
 
