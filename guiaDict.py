@@ -60,10 +60,6 @@ def navegar_atras (historiales: dict[str, Pila[str]], usuario:str):
     p.put(actual)
     visitar_sitio(historiales,usuario,anterior)
 
-visitar_sitio(historiales,"Tommy","google.com")
-visitar_sitio(historiales,"Tommy","youtube.com")
-navegar_atras(historiales,"Tommy")
-
 lista = []
 for k,v in historiales.items():
     print(f"Historial de {k}: ")
@@ -73,3 +69,32 @@ for k,v in historiales.items():
 print(lista)
 
 
+inventario: dict[str,dict[str,int]] = {}
+
+def agregar_producto (inventario: dict[str,dict[str,int]], nombre:str, precio:int, cantidad:int):
+
+    inventario [nombre] = {"precio":precio, "cantidad":cantidad}
+
+
+def actualizar_stock (inventario: dict[str,dict[str,int]], nombre:str, cantidad:int):
+
+    inventario[nombre]["cantidad"] = cantidad
+
+def actualizar_precios (inventario: dict[str,dict[str,int]], nombre: str, precio:int):
+
+    inventario[nombre]["precio"] = precio
+
+def calcular_valor_inventario (inventario: dict[str,dict[str,int]]) -> float:
+    res = 0
+
+    for k,v in inventario.items():
+        res += v["precio"] * v["cantidad"]
+
+    return res
+
+agregar_producto(inventario, "gomitas", 50, 3)
+agregar_producto(inventario, "caramelos", 25, 10)
+actualizar_stock(inventario, "gomitas", 8 )
+print(inventario) 
+print(calcular_valor_inventario(inventario))
+   
