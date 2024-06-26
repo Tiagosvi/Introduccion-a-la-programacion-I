@@ -49,5 +49,30 @@ mejorPromedio ((x,y):(a,b):xs) | promedio y > promedio b = mejorPromedio ((x,y):
                                | otherwise = mejorPromedio ((a,b):xs)
 
 
---Ejercicio 4:
-seGraduoConHonores :: [(String, [Int])]
+type Tablero = [[Int]]
+
+masRepetido :: Tablero -> Int
+masRepetido (x:y:xs) | longitudT (x:y:xs)  == 2 && masAparecidoLista x (x:y:xs) >= masAparecidoLista y (x:y:xs) = masAparecidoLista x (x:y:xs)
+                     | longitudT (x:y:xs) == 2 && masAparecidoLista x (x:y:xs) < masAparecidoLista y (x:y:xs) = masAparecidoLista y (x:y:xs)
+                     | masAparecidoLista x (x:y:xs) >= masAparecidoLista y (x:y:xs) = masRepetido (x:xs)
+                     | otherwise = masRepetido (y:xs)
+
+
+masAparecidoLista :: [Int] -> Tablero -> Int
+masAparecidoLista [x]_ = x
+masAparecidoLista (x:y:xs) t | sumaApariciones x t > sumaApariciones y t = masAparecidoLista (x:xs) t
+                             | otherwise = masAparecidoLista (y:xs) t
+
+apariciones :: Int -> [Int] -> Int
+apariciones n [] = 0
+apariciones n (x:xs) | n /= x = apariciones n xs
+                        | otherwise = 1 + apariciones n xs
+
+
+sumaApariciones :: Int -> Tablero -> Int
+sumaApariciones n [] = 0
+sumaApariciones n (x:xs) = apariciones n x + sumaApariciones n xs
+
+longitudT :: Tablero -> Int
+longitudT [] = 0
+longitudT (x:xs) = 1 + longitudT xs
