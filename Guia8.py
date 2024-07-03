@@ -148,6 +148,7 @@ def cantidad_elementos(p: Pila) -> int:
 
     return sumar
 
+print(cantidad_elementos(p))
 #Ejercicio 10:
 
 def buscar_el_maximo(p: Pila[int]) -> int:
@@ -160,6 +161,10 @@ def buscar_el_maximo(p: Pila[int]) -> int:
         p.put(lista[i])
     return max(lista)
 
+p = Pila()
+p.put(4)
+p.put(3)
+print(buscar_el_maximo(p))
 
 #Ejercicio 11:
 
