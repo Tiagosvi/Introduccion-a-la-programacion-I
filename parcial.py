@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 from queue import Queue as Cola
 
 #Ejercicio:
+=======
+>>>>>>> 6f01054f598921732313a11efc3745848b30be50
 def cantidad_de_infecciones(registros: tuple[(int,str)], infeccion: str) -> int:
     res: int = 0
     for _id, _infeccion in registros:
@@ -26,6 +29,7 @@ registros = [(45,"resfrio"),(50,"fiebre"),(20,"resfrio")]
 infecciosas = ["resfrio","fiebre"]
 print(alarma_epidemiologica(registros,infecciosas, 0.7))
 
+<<<<<<< HEAD
 
 #Ejercicio 2:
 
@@ -129,3 +133,5 @@ def empleados_del_mes(horas:dict[int,list[int]]) -> list[int]:
 horas = {20:[45],30:[8,45]}
 print(empleados_del_mes (horas))
         
+=======
+>>>>>>> 6f01054f598921732313a11efc3745848b30be50
